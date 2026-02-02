@@ -332,6 +332,54 @@ open CyberWeather.xcodeproj
 
 ---
 
+## 👨‍💻 作者 Author
+
+<p align="center">
+  <a href="https://github.com/AuroraPixel">
+    <img src="https://img.shields.io/badge/GitHub-AuroraPixel-181717?style=for-the-badge&logo=github" alt="GitHub">
+  </a>
+</p>
+
+### GitHub 统计
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=AuroraPixel&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=00D4FF&icon_color=7B2FFF&text_color=FFFFFF" alt="GitHub Stats" height="165">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=AuroraPixel&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=00D4FF&text_color=FFFFFF" alt="Top Languages" height="165">
+</p>
+
+<p align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=AuroraPixel&theme=tokyonight&hide_border=true&background=0D1117&ring=00D4FF&fire=FF6B00&currStreakLabel=00D4FF" alt="GitHub Streak">
+</p>
+
+### 其他热门项目 Other Popular Projects
+
+<p align="center">
+  <a href="https://github.com/AuroraPixel/ai-personal-daily-assistant">
+    <img src="https://img.shields.io/badge/🤖_AI_Personal_Assistant-77_Stars-FFD700?style=for-the-badge" alt="AI Assistant">
+  </a>
+  <a href="https://github.com/AuroraPixel/MarkMuse">
+    <img src="https://img.shields.io/badge/📝_MarkMuse-33_Stars-00D4FF?style=for-the-badge" alt="MarkMuse">
+  </a>
+  <a href="https://github.com/AuroraPixel/fa_ai">
+    <img src="https://img.shields.io/badge/🧠_FA_AI-7_Stars-7B2FFF?style=for-the-badge" alt="FA AI">
+  </a>
+</p>
+
+| 项目 | 描述 | Stars | 技术栈 |
+|:----:|:----:|:-----:|:------:|
+| [ai-personal-daily-assistant](https://github.com/AuroraPixel/ai-personal-daily-assistant) | AI 个人日常助手 | ![Stars](https://img.shields.io/github/stars/AuroraPixel/ai-personal-daily-assistant?style=flat-square&color=FFD700) | AI/LLM |
+| [MarkMuse](https://github.com/AuroraPixel/MarkMuse) | PDF 转 Markdown 工具 (Mistral AI OCR) | ![Stars](https://img.shields.io/github/stars/AuroraPixel/MarkMuse?style=flat-square&color=00D4FF) | Python |
+| [fa_ai](https://github.com/AuroraPixel/fa_ai) | AI 项目 | ![Stars](https://img.shields.io/github/stars/AuroraPixel/fa_ai?style=flat-square&color=7B2FFF) | AI |
+| [mrk-doc](https://github.com/AuroraPixel/mrk-doc) | Magicrepokit 技术文档 | ![Stars](https://img.shields.io/github/stars/AuroraPixel/mrk-doc?style=flat-square&color=FF6B00) | Docs |
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Total_Repos-40+-blue?style=flat-square&logo=github" alt="Total Repos">
+  <img src="https://img.shields.io/badge/Total_Stars-120+-FFD700?style=flat-square&logo=github" alt="Total Stars">
+  <img src="https://img.shields.io/badge/Main_Languages-Swift%20|%20Python%20|%20Go%20|%20Java-orange?style=flat-square" alt="Languages">
+</p>
+
+---
+
 ## 🙏 致谢
 
 - [Open-Meteo](https://open-meteo.com/) - 免费天气 API
@@ -345,9 +393,18 @@ open CyberWeather.xcodeproj
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/stars/AuroraPixel/CyberWeather?style=social" alt="Star">
+  <a href="https://github.com/AuroraPixel/CyberWeather/stargazers">
+    <img src="https://img.shields.io/github/stars/AuroraPixel/CyberWeather?style=social" alt="Star">
+  </a>
+  <a href="https://github.com/AuroraPixel?tab=followers">
+    <img src="https://img.shields.io/github/followers/AuroraPixel?style=social" alt="Followers">
+  </a>
 </p>
 
 <p align="center">
-  Made with 💜 by CyberWeather Team
+  <img src="https://komarev.com/ghpvc/?username=AuroraPixel&color=00D4FF&style=flat-square&label=Profile+Views" alt="Profile Views">
+</p>
+
+<p align="center">
+  Made with 💜 by <a href="https://github.com/AuroraPixel">AuroraPixel</a>
 </p>
