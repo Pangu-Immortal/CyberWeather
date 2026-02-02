@@ -19,9 +19,9 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/stars/AuroraPixel/CyberWeather?style=social" alt="Stars">
-  <img src="https://img.shields.io/github/forks/AuroraPixel/CyberWeather?style=social" alt="Forks">
-  <img src="https://img.shields.io/github/watchers/AuroraPixel/CyberWeather?style=social" alt="Watchers">
+  <img src="https://img.shields.io/github/stars/Pangu-Immortal/CyberWeather?style=social" alt="Stars">
+  <img src="https://img.shields.io/github/forks/Pangu-Immortal/CyberWeather?style=social" alt="Forks">
+  <img src="https://img.shields.io/github/watchers/Pangu-Immortal/CyberWeather?style=social" alt="Watchers">
 </p>
 
 <p align="center">
@@ -42,16 +42,16 @@
 ## 📊 项目统计 Project Stats
 
 <p align="center">
-  <img src="https://img.shields.io/github/repo-size/AuroraPixel/CyberWeather?style=for-the-badge&logo=github&label=Repo%20Size&color=blue" alt="Repo Size">
-  <img src="https://img.shields.io/github/languages/code-size/AuroraPixel/CyberWeather?style=for-the-badge&logo=github&label=Code%20Size&color=green" alt="Code Size">
-  <img src="https://img.shields.io/github/last-commit/AuroraPixel/CyberWeather?style=for-the-badge&logo=github&label=Last%20Commit&color=purple" alt="Last Commit">
+  <img src="https://img.shields.io/github/repo-size/Pangu-Immortal/CyberWeather?style=for-the-badge&logo=github&label=Repo%20Size&color=blue" alt="Repo Size">
+  <img src="https://img.shields.io/github/languages/code-size/Pangu-Immortal/CyberWeather?style=for-the-badge&logo=github&label=Code%20Size&color=green" alt="Code Size">
+  <img src="https://img.shields.io/github/last-commit/Pangu-Immortal/CyberWeather?style=for-the-badge&logo=github&label=Last%20Commit&color=purple" alt="Last Commit">
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/issues/AuroraPixel/CyberWeather?style=flat-square&logo=github&color=red" alt="Issues">
-  <img src="https://img.shields.io/github/issues-pr/AuroraPixel/CyberWeather?style=flat-square&logo=github&color=orange" alt="PRs">
-  <img src="https://img.shields.io/github/issues-closed/AuroraPixel/CyberWeather?style=flat-square&logo=github&color=green" alt="Closed Issues">
-  <img src="https://img.shields.io/github/commit-activity/m/AuroraPixel/CyberWeather?style=flat-square&logo=github" alt="Commit Activity">
+  <img src="https://img.shields.io/github/issues/Pangu-Immortal/CyberWeather?style=flat-square&logo=github&color=red" alt="Issues">
+  <img src="https://img.shields.io/github/issues-pr/Pangu-Immortal/CyberWeather?style=flat-square&logo=github&color=orange" alt="PRs">
+  <img src="https://img.shields.io/github/issues-closed/Pangu-Immortal/CyberWeather?style=flat-square&logo=github&color=green" alt="Closed Issues">
+  <img src="https://img.shields.io/github/commit-activity/m/Pangu-Immortal/CyberWeather?style=flat-square&logo=github" alt="Commit Activity">
 </p>
 
 | 📈 指标 | 数值 | 说明 |
@@ -252,7 +252,7 @@ CyberWeather/
 
 1. **克隆仓库**
 ```bash
-git clone https://github.com/AuroraPixel/CyberWeather.git
+git clone https://github.com/Pangu-Immortal/CyberWeather.git
 cd CyberWeather
 ```
 
@@ -335,47 +335,49 @@ open CyberWeather.xcodeproj
 ## 👨‍💻 作者 Author
 
 <p align="center">
-  <a href="https://github.com/AuroraPixel">
-    <img src="https://img.shields.io/badge/GitHub-AuroraPixel-181717?style=for-the-badge&logo=github" alt="GitHub">
+  <a href="https://github.com/Pangu-Immortal">
+    <img src="https://img.shields.io/badge/GitHub-Pangu-Immortal-181717?style=for-the-badge&logo=github" alt="GitHub">
   </a>
 </p>
 
 ### GitHub 统计
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=AuroraPixel&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=00D4FF&icon_color=7B2FFF&text_color=FFFFFF" alt="GitHub Stats" height="165">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=AuroraPixel&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=00D4FF&text_color=FFFFFF" alt="Top Languages" height="165">
+  <img src="https://github-readme-stats.vercel.app/api?username=Pangu-Immortal&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=00D4FF&icon_color=7B2FFF&text_color=FFFFFF" alt="GitHub Stats" height="165">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Pangu-Immortal&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=00D4FF&text_color=FFFFFF" alt="Top Languages" height="165">
 </p>
 
 <p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=AuroraPixel&theme=tokyonight&hide_border=true&background=0D1117&ring=00D4FF&fire=FF6B00&currStreakLabel=00D4FF" alt="GitHub Streak">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Pangu-Immortal&theme=tokyonight&hide_border=true&background=0D1117&ring=00D4FF&fire=FF6B00&currStreakLabel=00D4FF" alt="GitHub Streak">
 </p>
 
 ### 其他热门项目 Other Popular Projects
 
 <p align="center">
-  <a href="https://github.com/AuroraPixel/ai-personal-daily-assistant">
-    <img src="https://img.shields.io/badge/🤖_AI_Personal_Assistant-77_Stars-FFD700?style=for-the-badge" alt="AI Assistant">
+  <a href="https://github.com/Pangu-Immortal/KeepLiveService">
+    <img src="https://img.shields.io/badge/🔥_KeepLiveService-130_Stars-FF6B00?style=for-the-badge" alt="KeepLiveService">
   </a>
-  <a href="https://github.com/AuroraPixel/MarkMuse">
-    <img src="https://img.shields.io/badge/📝_MarkMuse-33_Stars-00D4FF?style=for-the-badge" alt="MarkMuse">
+  <a href="https://github.com/Pangu-Immortal/hunter-ai-content-factory">
+    <img src="https://img.shields.io/badge/🤖_Hunter_AI-61_Stars-FFD700?style=for-the-badge" alt="Hunter AI">
   </a>
-  <a href="https://github.com/AuroraPixel/fa_ai">
-    <img src="https://img.shields.io/badge/🧠_FA_AI-7_Stars-7B2FFF?style=for-the-badge" alt="FA AI">
+  <a href="https://github.com/Pangu-Immortal/SplashScreens">
+    <img src="https://img.shields.io/badge/🌟_SplashScreens-22_Stars-00D4FF?style=for-the-badge" alt="SplashScreens">
   </a>
 </p>
 
 | 项目 | 描述 | Stars | 技术栈 |
 |:----:|:----:|:-----:|:------:|
-| [ai-personal-daily-assistant](https://github.com/AuroraPixel/ai-personal-daily-assistant) | AI 个人日常助手 | ![Stars](https://img.shields.io/github/stars/AuroraPixel/ai-personal-daily-assistant?style=flat-square&color=FFD700) | AI/LLM |
-| [MarkMuse](https://github.com/AuroraPixel/MarkMuse) | PDF 转 Markdown 工具 (Mistral AI OCR) | ![Stars](https://img.shields.io/github/stars/AuroraPixel/MarkMuse?style=flat-square&color=00D4FF) | Python |
-| [fa_ai](https://github.com/AuroraPixel/fa_ai) | AI 项目 | ![Stars](https://img.shields.io/github/stars/AuroraPixel/fa_ai?style=flat-square&color=7B2FFF) | AI |
-| [mrk-doc](https://github.com/AuroraPixel/mrk-doc) | Magicrepokit 技术文档 | ![Stars](https://img.shields.io/github/stars/AuroraPixel/mrk-doc?style=flat-square&color=FF6B00) | Docs |
+| [KeepLiveService](https://github.com/Pangu-Immortal/KeepLiveService) | Android 16 最新保活方案 | ![Stars](https://img.shields.io/github/stars/Pangu-Immortal/KeepLiveService?style=flat-square&color=FF6B00) | Android/Kotlin |
+| [hunter-ai-content-factory](https://github.com/Pangu-Immortal/hunter-ai-content-factory) | AI 自动情报采集发布系统 | ![Stars](https://img.shields.io/github/stars/Pangu-Immortal/hunter-ai-content-factory?style=flat-square&color=FFD700) | AI/Python |
+| [SplashScreens](https://github.com/Pangu-Immortal/SplashScreens) | Android12 SplashScreen API | ![Stars](https://img.shields.io/github/stars/Pangu-Immortal/SplashScreens?style=flat-square&color=00D4FF) | Android |
+| [VideoCropping](https://github.com/Pangu-Immortal/VideoCropping) | 视频裁剪库 (FFmpeg) | ![Stars](https://img.shields.io/github/stars/Pangu-Immortal/VideoCropping?style=flat-square&color=7B2FFF) | Android/FFmpeg |
+| [Kbogla](https://github.com/Pangu-Immortal/Kbogla) | OpenGL ES 动态壁纸库 | ![Stars](https://img.shields.io/github/stars/Pangu-Immortal/Kbogla?style=flat-square&color=00E400) | OpenGL/Android |
+| [TrendRadar](https://github.com/Pangu-Immortal/TrendRadar) | AI 舆情监控分析工具 | ![Stars](https://img.shields.io/github/stars/Pangu-Immortal/TrendRadar?style=flat-square&color=FF00FF) | AI/MCP |
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Total_Repos-40+-blue?style=flat-square&logo=github" alt="Total Repos">
-  <img src="https://img.shields.io/badge/Total_Stars-120+-FFD700?style=flat-square&logo=github" alt="Total Stars">
-  <img src="https://img.shields.io/badge/Main_Languages-Swift%20|%20Python%20|%20Go%20|%20Java-orange?style=flat-square" alt="Languages">
+  <img src="https://img.shields.io/badge/Total_Repos-25+-blue?style=flat-square&logo=github" alt="Total Repos">
+  <img src="https://img.shields.io/badge/Total_Stars-280+-FFD700?style=flat-square&logo=github" alt="Total Stars">
+  <img src="https://img.shields.io/badge/Main_Languages-Kotlin%20|%20Python%20|%20Swift%20|%20Java-orange?style=flat-square" alt="Languages">
 </p>
 
 ---
@@ -393,18 +395,18 @@ open CyberWeather.xcodeproj
 </p>
 
 <p align="center">
-  <a href="https://github.com/AuroraPixel/CyberWeather/stargazers">
-    <img src="https://img.shields.io/github/stars/AuroraPixel/CyberWeather?style=social" alt="Star">
+  <a href="https://github.com/Pangu-Immortal/CyberWeather/stargazers">
+    <img src="https://img.shields.io/github/stars/Pangu-Immortal/CyberWeather?style=social" alt="Star">
   </a>
-  <a href="https://github.com/AuroraPixel?tab=followers">
-    <img src="https://img.shields.io/github/followers/AuroraPixel?style=social" alt="Followers">
+  <a href="https://github.com/Pangu-Immortal?tab=followers">
+    <img src="https://img.shields.io/github/followers/Pangu-Immortal?style=social" alt="Followers">
   </a>
 </p>
 
 <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=AuroraPixel&color=00D4FF&style=flat-square&label=Profile+Views" alt="Profile Views">
+  <img src="https://komarev.com/ghpvc/?username=Pangu-Immortal&color=00D4FF&style=flat-square&label=Profile+Views" alt="Profile Views">
 </p>
 
 <p align="center">
-  Made with 💜 by <a href="https://github.com/AuroraPixel">AuroraPixel</a>
+  Made with 💜 by <a href="https://github.com/Pangu-Immortal">Pangu-Immortal</a>
 </p>
