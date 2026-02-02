@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="SmartCleaner/Assets.xcassets/AppIcon.appiconset/AppIcon.png" width="120" alt="CyberWeather Logo">
+  <img src="CyberWeather/Assets.xcassets/AppIcon.appiconset/AppIcon.png" width="120" alt="CyberWeather Logo">
 </p>
 
 <h1 align="center">CyberWeather</h1>
@@ -96,8 +96,8 @@
 ## 🏗️ 项目结构
 
 ```
-SmartCleaner/
-├── SmartCleanerApp.swift          # App 入口
+CyberWeather/
+├── CyberWeatherApp.swift          # App 入口
 ├── ContentView.swift              # 主视图容器
 │
 ├── Models/                        # 数据模型
@@ -186,7 +186,7 @@ cd CyberWeather
 
 2. **打开项目**
 ```bash
-open SmartCleaner.xcodeproj
+open CyberWeather.xcodeproj
 ```
 
 3. **运行**
