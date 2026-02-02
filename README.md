@@ -19,6 +19,12 @@
 </p>
 
 <p align="center">
+  <img src="https://img.shields.io/github/stars/AuroraPixel/CyberWeather?style=social" alt="Stars">
+  <img src="https://img.shields.io/github/forks/AuroraPixel/CyberWeather?style=social" alt="Forks">
+  <img src="https://img.shields.io/github/watchers/AuroraPixel/CyberWeather?style=social" alt="Watchers">
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/🎨_Design-Cyberpunk-ff00ff?style=for-the-badge" alt="Design">
   <img src="https://img.shields.io/badge/✨_Effects-60fps-00d4ff?style=for-the-badge" alt="Effects">
   <img src="https://img.shields.io/badge/🌈_Theme-Neon_Glow-7b2fff?style=for-the-badge" alt="Theme">
@@ -30,6 +36,91 @@
   <img src="https://img.shields.io/badge/☕_Buy_me_a-Coffee-yellow?style=flat-square" alt="Coffee">
   <img src="https://img.shields.io/badge/⭐_Star-This_Repo-gold?style=flat-square" alt="Star">
 </p>
+
+---
+
+## 📊 项目统计 Project Stats
+
+<p align="center">
+  <img src="https://img.shields.io/github/repo-size/AuroraPixel/CyberWeather?style=for-the-badge&logo=github&label=Repo%20Size&color=blue" alt="Repo Size">
+  <img src="https://img.shields.io/github/languages/code-size/AuroraPixel/CyberWeather?style=for-the-badge&logo=github&label=Code%20Size&color=green" alt="Code Size">
+  <img src="https://img.shields.io/github/last-commit/AuroraPixel/CyberWeather?style=for-the-badge&logo=github&label=Last%20Commit&color=purple" alt="Last Commit">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/github/issues/AuroraPixel/CyberWeather?style=flat-square&logo=github&color=red" alt="Issues">
+  <img src="https://img.shields.io/github/issues-pr/AuroraPixel/CyberWeather?style=flat-square&logo=github&color=orange" alt="PRs">
+  <img src="https://img.shields.io/github/issues-closed/AuroraPixel/CyberWeather?style=flat-square&logo=github&color=green" alt="Closed Issues">
+  <img src="https://img.shields.io/github/commit-activity/m/AuroraPixel/CyberWeather?style=flat-square&logo=github" alt="Commit Activity">
+</p>
+
+| 📈 指标 | 数值 | 说明 |
+|:------:|:----:|:-----|
+| 📁 **源文件** | 25+ | Swift 源代码文件 |
+| 🎬 **动画类型** | 7 | 晴/云/雨/雪/雾/雷/夜 |
+| 🧩 **组件** | 15+ | 可复用 UI 组件 |
+| 📊 **图表** | 3 | 温度/降水/风力图表 |
+| 🔗 **依赖** | 0 | 零第三方依赖 |
+| ⚡ **帧率** | 60fps | 流畅动画体验 |
+
+---
+
+## 🌤️ 天气动画预览 Weather Animations
+
+<p align="center">
+  <img src="https://img.shields.io/badge/☀️_晴天-FFD700?style=for-the-badge&logoColor=white" alt="Sunny">
+  <img src="https://img.shields.io/badge/☁️_多云-87CEEB?style=for-the-badge&logoColor=white" alt="Cloudy">
+  <img src="https://img.shields.io/badge/🌧️_雨天-4169E1?style=for-the-badge&logoColor=white" alt="Rainy">
+  <img src="https://img.shields.io/badge/❄️_雪天-E0FFFF?style=for-the-badge&logoColor=black" alt="Snowy">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/⛈️_雷暴-8B008B?style=for-the-badge&logoColor=white" alt="Thunder">
+  <img src="https://img.shields.io/badge/🌫️_雾天-708090?style=for-the-badge&logoColor=white" alt="Foggy">
+  <img src="https://img.shields.io/badge/🌙_夜间-191970?style=for-the-badge&logoColor=white" alt="Night">
+</p>
+
+| 天气类型 | 主要效果 | 粒子数量 | 特殊效果 |
+|:-------:|:-------:|:-------:|:-------:|
+| ☀️ 晴天 | 发光太阳 + 热浪 | 25+ 光斑 | 全屏辉光 |
+| ☁️ 多云 | 漂浮云朵 | 8 朵云 | 柔和光影 |
+| 🌧️ 雨天 | 霓虹雨滴 | 100+ 雨滴 | 涟漪效果 |
+| ❄️ 雪天 | 飘落雪花 | 80+ 雪花 | 冰晶闪烁 |
+| ⛈️ 雷暴 | 闪电效果 | 150+ 雨滴 | 雷电闪烁 |
+| 🌫️ 雾天 | 流动薄雾 | 6 层雾 | 朦胧光晕 |
+| 🌙 夜间 | 星空月光 | 60+ 星星 | 流星划过 |
+
+---
+
+## 🎨 配色方案 Color Palette
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Neon_Blue-00D4FF?style=for-the-badge" alt="Neon Blue">
+  <img src="https://img.shields.io/badge/Neon_Purple-7B2FFF?style=for-the-badge" alt="Neon Purple">
+  <img src="https://img.shields.io/badge/Neon_Pink-FF00FF?style=for-the-badge" alt="Neon Pink">
+  <img src="https://img.shields.io/badge/Neon_Green-00E400?style=for-the-badge" alt="Neon Green">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Neon_Orange-FF6B00?style=for-the-badge" alt="Neon Orange">
+  <img src="https://img.shields.io/badge/Neon_Yellow-FFD700?style=for-the-badge" alt="Neon Yellow">
+  <img src="https://img.shields.io/badge/Dark_BG-0A0A1A?style=for-the-badge" alt="Dark BG">
+  <img src="https://img.shields.io/badge/Card_BG-141428?style=for-the-badge" alt="Card BG">
+</p>
+
+```swift
+// 霓虹色系
+neonBlue   = #00D4FF  // 主色调 - 霓虹蓝
+neonPurple = #7B2FFF  // 辅助色 - 霓虹紫
+neonPink   = #FF00FF  // 强调色 - 霓虹粉
+neonGreen  = #00E400  // 成功色 - 霓虹绿
+neonOrange = #FF6B00  // 警告色 - 霓虹橙
+neonYellow = #FFD700  // 高亮色 - 霓虹金
+
+// 背景色系
+darkBackground = #0A0A1A  // 深紫黑
+cardBackground = #141428  // 卡片背景（70% 透明度）
+```
 
 ---
 
@@ -63,17 +154,6 @@
 - **动态渐变** - 流动的赛博朋克配色
 - **粒子系统** - 漂浮光斑、闪烁星星、能量流
 
-### 🌤️ 天气动画
-| 天气类型 | 动画效果 |
-|---------|---------|
-| ☀️ 晴天 | 发光太阳 + 热浪 + 光晕 + 漂浮光斑 |
-| ☁️ 多云 | 漂浮云朵 + 柔和光影 |
-| 🌧️ 雨天 | 霓虹雨滴 + 涟漪效果 |
-| ❄️ 雪天 | 飘落雪花 + 冰晶闪烁 |
-| ⛈️ 雷暴 | 闪电效果 + 暴雨 |
-| 🌫️ 雾天 | 流动薄雾 + 朦胧光晕 |
-| 🌙 夜间 | 星空 + 月光 + 流星 |
-
 ### 📊 数据功能
 - **实时天气** - 当前温度、体感温度、天气状况
 - **24小时预报** - 逐小时温度、降水概率
@@ -84,6 +164,13 @@
 - **数据图表** - 温度趋势、降水分布、风力变化
 
 ### 🛠️ 技术特性
+<p align="center">
+  <img src="https://img.shields.io/badge/SwiftUI-100%25_Native-5856D6?style=flat-square&logo=swift" alt="SwiftUI">
+  <img src="https://img.shields.io/badge/Canvas-High_Perf-00D4FF?style=flat-square" alt="Canvas">
+  <img src="https://img.shields.io/badge/TimelineView-60fps-7B2FFF?style=flat-square" alt="TimelineView">
+  <img src="https://img.shields.io/badge/GPU-Accelerated-FF6B00?style=flat-square" alt="GPU">
+</p>
+
 - 100% **SwiftUI** 原生开发
 - **60fps** 流畅动画
 - **Canvas + TimelineView** 高性能渲染
@@ -151,36 +238,21 @@ CyberWeather/
 
 ---
 
-## 🎨 配色方案
-
-```swift
-// 霓虹色系
-neonBlue   = #00D4FF  // 主色调 - 霓虹蓝
-neonPurple = #7B2FFF  // 辅助色 - 霓虹紫
-neonPink   = #FF00FF  // 强调色 - 霓虹粉
-neonGreen  = #00E400  // 成功色 - 霓虹绿
-neonOrange = #FF6B00  // 警告色 - 霓虹橙
-neonYellow = #FFD700  // 高亮色 - 霓虹金
-
-// 背景色系
-darkBackground = #0A0A1A  // 深紫黑
-cardBackground = #141428  // 卡片背景（70% 透明度）
-```
-
----
-
 ## 🚀 快速开始
 
 ### 环境要求
-- macOS 14.0+
-- Xcode 15.0+
-- iOS 17.0+ (设备或模拟器)
+
+<p align="center">
+  <img src="https://img.shields.io/badge/macOS-14.0+-000000?style=flat-square&logo=apple" alt="macOS">
+  <img src="https://img.shields.io/badge/Xcode-15.0+-147EFB?style=flat-square&logo=xcode" alt="Xcode">
+  <img src="https://img.shields.io/badge/iOS-17.0+-000000?style=flat-square&logo=ios" alt="iOS">
+</p>
 
 ### 安装步骤
 
 1. **克隆仓库**
 ```bash
-git clone https://github.com/your-username/CyberWeather.git
+git clone https://github.com/AuroraPixel/CyberWeather.git
 cd CyberWeather
 ```
 
@@ -201,6 +273,12 @@ open CyberWeather.xcodeproj
 
 ## 🌐 API 说明
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Open--Meteo-Free_API-00D4FF?style=for-the-badge" alt="Open-Meteo">
+  <img src="https://img.shields.io/badge/No_API_Key-Required-00E400?style=for-the-badge" alt="No Key">
+  <img src="https://img.shields.io/badge/10K_Requests-Per_Day-FFD700?style=for-the-badge" alt="Rate Limit">
+</p>
+
 本项目使用 [Open-Meteo](https://open-meteo.com/) 免费天气 API：
 
 - **无需注册** - 无需 API Key
@@ -212,18 +290,27 @@ open CyberWeather.xcodeproj
 
 ## 📦 依赖项
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Dependencies-0-success?style=for-the-badge" alt="Zero Dependencies">
+</p>
+
 本项目 **零第三方依赖**，完全使用 Apple 原生框架：
 
-| 框架 | 用途 |
-|-----|------|
-| SwiftUI | UI 框架 |
-| Combine | 响应式编程 |
-| CoreLocation | 定位服务 |
-| Charts | 数据图表 (iOS 16+) |
+| 框架 | 用途 | 版本 |
+|:---:|:----:|:----:|
+| <img src="https://img.shields.io/badge/SwiftUI-5856D6?style=flat-square&logo=swift&logoColor=white" alt="SwiftUI"> | UI 框架 | iOS 17+ |
+| <img src="https://img.shields.io/badge/Combine-FF9500?style=flat-square&logo=swift&logoColor=white" alt="Combine"> | 响应式编程 | iOS 13+ |
+| <img src="https://img.shields.io/badge/CoreLocation-007AFF?style=flat-square&logo=apple&logoColor=white" alt="CoreLocation"> | 定位服务 | iOS 2+ |
+| <img src="https://img.shields.io/badge/Charts-34C759?style=flat-square&logo=swift&logoColor=white" alt="Charts"> | 数据图表 | iOS 16+ |
 
 ---
 
 ## 🤝 贡献指南
+
+<p align="center">
+  <img src="https://img.shields.io/badge/PRs-Welcome-brightgreen?style=for-the-badge" alt="PRs Welcome">
+  <img src="https://img.shields.io/badge/Issues-Welcome-blue?style=for-the-badge" alt="Issues Welcome">
+</p>
 
 欢迎提交 Issue 和 Pull Request！
 
@@ -236,6 +323,10 @@ open CyberWeather.xcodeproj
 ---
 
 ## 📄 开源协议
+
+<p align="center">
+  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="MIT License">
+</p>
 
 本项目采用 [MIT License](LICENSE) 开源协议。
 
@@ -251,6 +342,10 @@ open CyberWeather.xcodeproj
 
 <p align="center">
   <strong>如果觉得这个项目不错，请给个 ⭐ Star 支持一下！</strong>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/github/stars/AuroraPixel/CyberWeather?style=social" alt="Star">
 </p>
 
 <p align="center">
