@@ -1,3 +1,5 @@
+![访客统计](https://count.getloli.com/get/@CyberWeather?theme=rule34)
+
 <p align="center">
   <img src="CyberWeather/Assets.xcassets/AppIcon.appiconset/AppIcon.png" width="120" alt="CyberWeather Logo">
 </p>
@@ -410,3 +412,24 @@ open CyberWeather.xcodeproj
 <p align="center">
   Made with 💜 by <a href="https://github.com/Pangu-Immortal">Pangu-Immortal</a>
 </p>
+
+---
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Pangu-Immortal/CyberWeather&type=Date)](https://star-history.com/#Pangu-Immortal/CyberWeather&Date)
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
