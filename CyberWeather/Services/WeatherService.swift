@@ -10,25 +10,24 @@
 
 import Foundation
 import CoreLocation
+import Combine
 
 // MARK: - API源枚举
 enum WeatherAPISource: String, CaseIterable {
     case openMeteo = "Open-Meteo"
-    case wthrcdn = "wthrcdn"
     case visualCrossing = "Visual Crossing"
+    // wthrcdn 已停用（域名无法解析）
 
     var priority: Int {
         switch self {
         case .openMeteo: return 0      // 最高优先级
-        case .wthrcdn: return 1
-        case .visualCrossing: return 2
+        case .visualCrossing: return 1 // 备用
         }
     }
 
     var description: String {
         switch self {
         case .openMeteo: return "Open-Meteo (免费无限制)"
-        case .wthrcdn: return "中国天气网 (国内源)"
         case .visualCrossing: return "Visual Crossing (备用)"
         }
     }
@@ -116,7 +115,8 @@ actor WeatherService {
     // MARK: - 状态
     private var lastUsedSource: WeatherAPISource = .openMeteo
     private var sourceErrors: [WeatherAPISource: Date] = [:]
-    private let errorCooldown: TimeInterval = 300  // 5分钟冷却时间
+    private let apiErrorCooldown: TimeInterval = 60     // API错误冷却1分钟
+    private let rateLimitCooldown: TimeInterval = 300   // 限流错误冷却5分钟
 
     // MARK: - 缓存
     private var cache: [String: CachedWeatherData] = [:]
@@ -153,10 +153,13 @@ actor WeatherService {
 
         for source in sortedSources {
             // 检查该源是否在冷却中
-            if let errorTime = sourceErrors[source],
-               Date().timeIntervalSince(errorTime) < errorCooldown {
-                print("[WeatherService] \(source.rawValue) 处于冷却中，跳过")
-                continue
+            if let errorTime = sourceErrors[source] {
+                let cooldown = getCooldownForSource(source)
+                if Date().timeIntervalSince(errorTime) < cooldown {
+                    let remaining = Int(cooldown - Date().timeIntervalSince(errorTime))
+                    print("[WeatherService] \(source.rawValue) 处于冷却中，剩余 \(remaining) 秒")
+                    continue
+                }
             }
 
             do {
@@ -176,7 +179,13 @@ actor WeatherService {
             } catch {
                 print("[WeatherService] ❌ \(source.rawValue) 失败: \(error.localizedDescription)")
                 errors[source.rawValue] = error
-                sourceErrors[source] = Date()
+                // 只有 API 错误才设置冷却，网络离线不设置
+                if !isNetworkOfflineError(error) {
+                    sourceErrors[source] = Date()
+                    print("[WeatherService] \(source.rawValue) 进入冷却状态")
+                } else {
+                    print("[WeatherService] 网络离线，不设置冷却")
+                }
             }
         }
 
@@ -196,13 +205,6 @@ actor WeatherService {
                 latitude: latitude,
                 longitude: longitude,
                 cityName: cityName
-            )
-
-        case .wthrcdn:
-            return try await fetchFromWthrcdn(
-                cityName: cityName,
-                latitude: latitude,
-                longitude: longitude
             )
 
         case .visualCrossing:
@@ -300,7 +302,8 @@ actor WeatherService {
             name: cityName,
             latitude: latitude,
             longitude: longitude,
-            timezone: "Asia/Shanghai"
+            timezone: "Asia/Shanghai",
+            elevation: nil  // wthrcdn API 不提供海拔数据
         )
 
         // 构建当前天气
@@ -311,7 +314,11 @@ actor WeatherService {
             weatherCode: 0,
             windSpeed: 10,
             windDirection: 180,
+            windGusts: nil,           // wthrcdn API 不提供阵风数据
             pressure: 1013,
+            surfacePressure: nil,     // wthrcdn API 不提供地表气压
+            cloudCover: nil,          // wthrcdn API 不提供云量
+            dewPoint: nil,            // wthrcdn API 不提供露点温度
             uvIndex: 5,
             visibility: 10,
             isDay: true
@@ -342,10 +349,13 @@ actor WeatherService {
                 apparentTemperatureMin: low,
                 sunrise: timeFormatter.string(from: sunriseDate),
                 sunset: timeFormatter.string(from: sunsetDate),
+                daylightDuration: nil,        // wthrcdn API 不提供日照时长
                 uvIndexMax: 5,
                 precipitationSum: 0,
                 precipitationProbabilityMax: 0,
+                precipitationHours: nil,      // wthrcdn API 不提供降水小时数
                 windSpeedMax: 10,
+                windGustsMax: nil,            // wthrcdn API 不提供最大阵风
                 windDirectionDominant: 180
             ))
         }
@@ -374,7 +384,8 @@ actor WeatherService {
             name: cityName,
             latitude: latitude,
             longitude: longitude,
-            timezone: data["timezone"] as? String ?? "Asia/Shanghai"
+            timezone: data["timezone"] as? String ?? "Asia/Shanghai",
+            elevation: nil  // Visual Crossing API 暂不解析海拔
         )
 
         // 当前天气
@@ -385,7 +396,11 @@ actor WeatherService {
             weatherCode: 0,
             windSpeed: currentConditions["windspeed"] as? Double ?? 10,
             windDirection: Int(currentConditions["winddir"] as? Double ?? 180),
+            windGusts: currentConditions["windgust"] as? Double,  // Visual Crossing 可能提供阵风
             pressure: currentConditions["pressure"] as? Double ?? 1013,
+            surfacePressure: nil,     // Visual Crossing 不提供地表气压
+            cloudCover: currentConditions["cloudcover"] as? Int,   // Visual Crossing 可能提供云量
+            dewPoint: currentConditions["dew"] as? Double,         // Visual Crossing 可能提供露点
             uvIndex: currentConditions["uvindex"] as? Double ?? 5,
             visibility: currentConditions["visibility"] as? Double ?? 10,
             isDay: true
@@ -408,10 +423,13 @@ actor WeatherService {
                 apparentTemperatureMin: day["feelslikemin"] as? Double ?? 15,
                 sunrise: "\(dateString)T\(sunrise)",
                 sunset: "\(dateString)T\(sunset)",
+                daylightDuration: nil,        // Visual Crossing 不直接提供日照时长
                 uvIndexMax: day["uvindex"] as? Double ?? 5,
                 precipitationSum: day["precip"] as? Double ?? 0,
                 precipitationProbabilityMax: Int(day["precipprob"] as? Double ?? 0),
+                precipitationHours: nil,      // Visual Crossing 不提供降水小时数
                 windSpeedMax: day["windspeed"] as? Double ?? 10,
+                windGustsMax: day["windgust"] as? Double,  // Visual Crossing 可能提供最大阵风
                 windDirectionDominant: Int(day["winddir"] as? Double ?? 180)
             ))
         }
@@ -430,6 +448,29 @@ actor WeatherService {
     private func extractTemp(from string: String) -> Double {
         let digits = string.filter { $0.isNumber || $0 == "-" }
         return Double(digits) ?? 20
+    }
+
+    /// 判断是否为网络离线错误（不应触发冷却）
+    private func isNetworkOfflineError(_ error: Error) -> Bool {
+        let nsError = error as NSError
+        // 网络离线相关错误码
+        let offlineErrorCodes = [
+            NSURLErrorNotConnectedToInternet,  // -1009
+            NSURLErrorNetworkConnectionLost,   // -1005
+            NSURLErrorDataNotAllowed,          // -1020
+        ]
+        return nsError.domain == NSURLErrorDomain && offlineErrorCodes.contains(nsError.code)
+    }
+
+    /// 获取指定源的冷却时间
+    private func getCooldownForSource(_ source: WeatherAPISource) -> TimeInterval {
+        // Visual Crossing 使用 DEMO_KEY 容易触发限流，冷却时间更长
+        switch source {
+        case .visualCrossing:
+            return rateLimitCooldown  // 5分钟
+        default:
+            return apiErrorCooldown   // 1分钟
+        }
     }
 
     // MARK: - 缓存方法
@@ -476,9 +517,10 @@ actor WeatherService {
     func getSourceStatus() -> [(source: WeatherAPISource, available: Bool, cooldownRemaining: TimeInterval?)] {
         return WeatherAPISource.allCases.map { source in
             if let errorTime = sourceErrors[source] {
+                let cooldown = getCooldownForSource(source)
                 let elapsed = Date().timeIntervalSince(errorTime)
-                if elapsed < errorCooldown {
-                    return (source, false, errorCooldown - elapsed)
+                if elapsed < cooldown {
+                    return (source, false, cooldown - elapsed)
                 }
             }
             return (source, true, nil)
@@ -487,13 +529,12 @@ actor WeatherService {
 }
 
 // MARK: - 自动更新管理器
-@Observable
-class WeatherUpdateManager {
+class WeatherUpdateManager: ObservableObject {
     static let shared = WeatherUpdateManager()
 
     private var timer: Timer?
-    private(set) var lastUpdateTime: Date?
-    private(set) var isUpdating = false
+    @Published private(set) var lastUpdateTime: Date?
+    @Published private(set) var isUpdating = false
 
     private init() {}
 

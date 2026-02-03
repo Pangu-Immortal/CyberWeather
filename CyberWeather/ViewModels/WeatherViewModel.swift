@@ -23,13 +23,14 @@ enum LoadingState: Equatable {
 // MARK: - 天气视图模型
 /// 管理天气数据获取、刷新和状态
 @MainActor
-@Observable
-class WeatherViewModel {
+class WeatherViewModel: ObservableObject {
 
     // MARK: - 可观察属性
-    var weatherData: WeatherData? // 天气数据
-    var loadingState: LoadingState = .idle // 加载状态
-    var showLocationPermissionAlert: Bool = false // 是否显示定位权限提示
+    @Published var weatherData: WeatherData? // 天气数据
+    @Published var loadingState: LoadingState = .idle // 加载状态
+    @Published var showLocationPermissionAlert: Bool = false // 是否显示定位权限提示
+    @Published var showErrorAlert: Bool = false // 是否显示错误弹窗
+    @Published var currentErrorMessage: String = "" // 当前错误信息
 
     // MARK: - 私有属性
     private let locationService = LocationService.shared // 定位服务
@@ -128,7 +129,10 @@ class WeatherViewModel {
 
         } catch {
             print("[WeatherViewModel] 加载失败: \(error)") // 日志
-            loadingState = .error(error.localizedDescription)
+            let errorMsg = error.localizedDescription
+            loadingState = .error(errorMsg)
+            currentErrorMessage = errorMsg
+            showErrorAlert = true
 
             // 加载失败时尝试使用默认位置
             await loadDefaultWeather()
@@ -138,6 +142,27 @@ class WeatherViewModel {
     /// 刷新天气数据
     func refreshWeather() async {
         print("[WeatherViewModel] 刷新天气数据") // 日志
+        // 刷新时清除缓存的位置，强制重新定位
+        locationService.currentLocation = nil
+        await loadWeather()
+    }
+
+    /// 手动刷新定位（点击城市名触发）
+    func refreshLocation() async {
+        print("[WeatherViewModel] 手动刷新定位") // 日志
+        loadingState = .loading
+
+        // 清除缓存的位置
+        locationService.currentLocation = nil
+
+        // 重新请求定位
+        if locationService.authorizationStatus == .notDetermined {
+            locationService.requestPermission()
+            // 等待授权状态变化
+            try? await Task.sleep(nanoseconds: 1_000_000_000) // 等待1秒让用户响应
+        }
+
+        // 重新加载天气
         await loadWeather()
     }
 
@@ -147,13 +172,51 @@ class WeatherViewModel {
         locationService.requestPermission()
     }
 
+    /// 清除错误状态
+    func dismissError() {
+        showErrorAlert = false
+        currentErrorMessage = ""
+        if case .error = loadingState {
+            // 如果有缓存数据，恢复到已加载状态
+            if weatherData != nil {
+                loadingState = .loaded
+            } else {
+                loadingState = .idle
+            }
+        }
+    }
+
+    /// 重置 API 冷却并重试
+    func resetAndRetry() async {
+        print("[WeatherViewModel] 重置 API 冷却并重试")
+        await weatherService.resetErrors()
+        dismissError()
+        await loadWeather()
+    }
+
     // MARK: - 私有方法
 
     /// 获取位置（带错误处理）
     private func getLocation() async -> CLLocation {
         // 检查定位权限
-        if !locationService.authorizationStatus.isAuthorized &&
-           locationService.authorizationStatus != .notDetermined {
+        let status = locationService.authorizationStatus
+
+        // 如果未确定，请求权限
+        if status == .notDetermined {
+            print("[WeatherViewModel] 定位权限未确定，请求权限") // 日志
+            locationService.requestPermission()
+            // 等待用户响应授权弹窗
+            try? await Task.sleep(nanoseconds: 2_000_000_000) // 等待2秒
+
+            // 再次检查状态
+            if !locationService.authorizationStatus.isAuthorized {
+                print("[WeatherViewModel] 用户未授权定位，使用默认位置") // 日志
+                return LocationService.defaultLocation
+            }
+        }
+
+        // 如果被拒绝或受限
+        if !status.isAuthorized && status != .notDetermined {
             print("[WeatherViewModel] 无定位权限，使用默认位置") // 日志
             return LocationService.defaultLocation
         }
@@ -267,7 +330,8 @@ extension WeatherViewModel {
                 name: "北京市",
                 latitude: 39.9,
                 longitude: 116.4,
-                timezone: "Asia/Shanghai"
+                timezone: "Asia/Shanghai",
+                elevation: 45  // 北京平均海拔
             ),
             current: CurrentWeatherData(
                 temperature: 25,
@@ -276,7 +340,11 @@ extension WeatherViewModel {
                 weatherCode: 0,
                 windSpeed: 12,
                 windDirection: 135,
+                windGusts: 18,
                 pressure: 1013,
+                surfacePressure: 1010,
+                cloudCover: 20,
+                dewPoint: 15,
                 uvIndex: 6,
                 visibility: 10,
                 isDay: true

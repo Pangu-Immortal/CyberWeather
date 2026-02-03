@@ -305,82 +305,7 @@ struct SunnyAnimation: View {
 
     // MARK: - 热浪效果层
     private func heatWaveLayer(size: CGSize) -> some View {
-        TimelineView(.animation(minimumInterval: 1/30)) { timeline in
-            let time = timeline.date.timeIntervalSinceReferenceDate
-
-            Canvas { context, canvasSize in
-                // 热浪区域（底部1/3）
-                let startY = canvasSize.height * 0.65
-
-                // 绘制多层热浪波纹
-                for layer in 0..<5 {
-                    let layerOffset = CGFloat(layer) * 0.15
-                    let speed = 0.8 + Double(layer) * 0.2
-                    let amplitude = 8.0 - Double(layer) * 1.0
-
-                    var path = Path()
-                    let y = startY + CGFloat(layer) * 25
-
-                    for x in stride(from: CGFloat(0), through: canvasSize.width, by: 4) {
-                        let wave1 = sin((Double(x) / 80 + time * speed + Double(layerOffset) * 3)) * amplitude
-                        let wave2 = sin((Double(x) / 50 + time * speed * 1.3 + Double(layerOffset) * 2)) * amplitude * 0.5
-                        let waveY = y + CGFloat(wave1 + wave2)
-
-                        if x == 0 {
-                            path.move(to: CGPoint(x: x, y: waveY))
-                        } else {
-                            path.addLine(to: CGPoint(x: x, y: waveY))
-                        }
-                    }
-
-                    path.addLine(to: CGPoint(x: canvasSize.width, y: canvasSize.height))
-                    path.addLine(to: CGPoint(x: 0, y: canvasSize.height))
-                    path.closeSubpath()
-
-                    // 热浪渐变（暖色调）
-                    let opacity = 0.08 - Double(layer) * 0.012
-                    let colors: [Color] = [
-                        Color(hex: "FF8C00").opacity(opacity),
-                        Color(hex: "FFD700").opacity(opacity * 0.7),
-                        Color(hex: "FF6B00").opacity(opacity * 0.5),
-                        .clear
-                    ]
-
-                    context.fill(
-                        path,
-                        with: .linearGradient(
-                            Gradient(colors: colors),
-                            startPoint: CGPoint(x: canvasSize.width / 2, y: y),
-                            endPoint: CGPoint(x: canvasSize.width / 2, y: canvasSize.height)
-                        )
-                    )
-                }
-
-                // 热浪扭曲线条
-                for i in 0..<8 {
-                    let baseY = startY + CGFloat(i) * 20 + 10
-                    var linePath = Path()
-
-                    for x in stride(from: CGFloat(0), through: canvasSize.width, by: 3) {
-                        let wave = sin((Double(x) / 60 + time * 1.2 + Double(i) * 0.5)) * 6
-                        let y = baseY + CGFloat(wave)
-
-                        if x == 0 {
-                            linePath.move(to: CGPoint(x: x, y: y))
-                        } else {
-                            linePath.addLine(to: CGPoint(x: x, y: y))
-                        }
-                    }
-
-                    let lineOpacity = 0.15 - Double(i) * 0.015
-                    context.stroke(
-                        linePath,
-                        with: .color(Color(hex: "FFD700").opacity(lineOpacity)),
-                        lineWidth: 1
-                    )
-                }
-            }
-        }
+        HeatWaveCanvas()
     }
 
     // MARK: - 生成漂浮光斑
@@ -808,6 +733,87 @@ struct SunParticle {
     let color: Color
     let startTime: TimeInterval
     let duration: Double
+}
+
+// MARK: - 热浪画布（独立视图避免编译器类型检查超时）
+private struct HeatWaveCanvas: View {
+    var body: some View {
+        TimelineView(.animation(minimumInterval: 1/30)) { timeline in
+            let time = timeline.date.timeIntervalSinceReferenceDate
+
+            Canvas { context, canvasSize in
+                drawHeatWaves(context: context, canvasSize: canvasSize, time: time)
+            }
+        }
+    }
+
+    private func drawHeatWaves(context: GraphicsContext, canvasSize: CGSize, time: TimeInterval) {
+        let startY = canvasSize.height * 0.65
+
+        for layer in 0..<5 {
+            let layerOffset = CGFloat(layer) * 0.15
+            let speed = 0.8 + Double(layer) * 0.2
+            let amplitude = 8.0 - Double(layer) * 1.0
+            let y = startY + CGFloat(layer) * 25
+
+            var path = Path()
+            for x in stride(from: CGFloat(0), through: canvasSize.width, by: 4) {
+                let wave1 = sin((Double(x) / 80 + time * speed + Double(layerOffset) * 3)) * amplitude
+                let wave2 = sin((Double(x) / 50 + time * speed * 1.3 + Double(layerOffset) * 2)) * amplitude * 0.5
+                let waveY = y + CGFloat(wave1 + wave2)
+
+                if x == 0 {
+                    path.move(to: CGPoint(x: x, y: waveY))
+                } else {
+                    path.addLine(to: CGPoint(x: x, y: waveY))
+                }
+            }
+
+            path.addLine(to: CGPoint(x: canvasSize.width, y: canvasSize.height))
+            path.addLine(to: CGPoint(x: 0, y: canvasSize.height))
+            path.closeSubpath()
+
+            let opacity = 0.08 - Double(layer) * 0.012
+            let colors: [Color] = [
+                Color(hex: "FF8C00").opacity(opacity),
+                Color(hex: "FFD700").opacity(opacity * 0.7),
+                Color(hex: "FF6B00").opacity(opacity * 0.5),
+                .clear
+            ]
+
+            context.fill(
+                path,
+                with: .linearGradient(
+                    Gradient(colors: colors),
+                    startPoint: CGPoint(x: canvasSize.width / 2, y: y),
+                    endPoint: CGPoint(x: canvasSize.width / 2, y: canvasSize.height)
+                )
+            )
+        }
+
+        for i in 0..<8 {
+            let baseY = startY + CGFloat(i) * 20 + 10
+            var linePath = Path()
+
+            for x in stride(from: CGFloat(0), through: canvasSize.width, by: 3) {
+                let wave = sin((Double(x) / 60 + time * 1.2 + Double(i) * 0.5)) * 6
+                let lineY = baseY + CGFloat(wave)
+
+                if x == 0 {
+                    linePath.move(to: CGPoint(x: x, y: lineY))
+                } else {
+                    linePath.addLine(to: CGPoint(x: x, y: lineY))
+                }
+            }
+
+            let lineOpacity = 0.15 - Double(i) * 0.015
+            context.stroke(
+                linePath,
+                with: .color(Color(hex: "FFD700").opacity(lineOpacity)),
+                lineWidth: 1
+            )
+        }
+    }
 }
 
 // MARK: - 预览

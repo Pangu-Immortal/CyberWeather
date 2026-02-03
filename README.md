@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="CyberWeather/Assets.xcassets/AppIcon.appiconset/AppIcon.png" width="120" alt="CyberWeather Logo">
+  <img src="Logo.png" width="120" alt="CyberWeather Logo">
 </p>
 
 <h1 align="center">CyberWeather</h1>

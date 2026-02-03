@@ -13,8 +13,7 @@ import SwiftUI
 struct ContentView: View {
 
     // MARK: - 属性
-    @State private var viewModel = WeatherViewModel() // 天气视图模型
-    @State private var showErrorAlert: Bool = false // 是否显示错误弹窗
+    @StateObject private var viewModel = WeatherViewModel() // 天气视图模型
     @State private var showSettings: Bool = false // 是否显示设置页面
 
     // MARK: - 视图
@@ -33,10 +32,13 @@ struct ContentView: View {
                         isRefreshing: viewModel.isLoading
                     )
 
-                    // 主天气显示
+                    // 主天气显示（点击定位区域可刷新位置）
                     MainWeatherView(
                         weatherData: viewModel.weatherData,
-                        isLoading: viewModel.isLoading
+                        isLoading: viewModel.isLoading,
+                        onLocationTapped: {
+                            Task { await viewModel.refreshLocation() }
+                        }
                     )
 
                     // 小时预报
@@ -50,7 +52,8 @@ struct ContentView: View {
                     if let daily = viewModel.weatherData?.daily, !daily.isEmpty {
                         Extended15DayView(
                             dailyData: daily,
-                            settings: AppSettings.shared
+                            settings: AppSettings.shared,
+                            currentTemperature: viewModel.weatherData?.current.temperature
                         )
                         .padding(.horizontal, CyberTheme.Spacing.md)
                     } else if viewModel.isLoading {
@@ -98,25 +101,29 @@ struct ContentView: View {
             if viewModel.weatherData == nil && viewModel.isLoading {
                 loadingOverlay
             }
+
+            // 错误弹窗（赛博朋克风格）
+            if viewModel.showErrorAlert {
+                CyberErrorAlert(
+                    message: viewModel.currentErrorMessage,
+                    onRetry: {
+                        Task { await viewModel.resetAndRetry() }
+                    },
+                    onDismiss: {
+                        viewModel.dismissError()
+                    }
+                )
+                .transition(.opacity)
+                .zIndex(100)
+            }
         }
         .task {
             await viewModel.loadWeather() // 首次加载天气数据
         }
-        .onChange(of: viewModel.errorMessage) { _, newValue in
-            showErrorAlert = newValue != nil // 显示错误提示
-        }
-        .alert("加载失败", isPresented: $showErrorAlert) {
-            Button("重试") {
-                Task { await viewModel.refreshWeather() }
-            }
-            Button("取消", role: .cancel) {}
-        } message: {
-            Text(viewModel.errorMessage ?? "未知错误")
-        }
         .sheet(isPresented: $showSettings) {
             SettingsView(settings: AppSettings.shared)
         }
-        .onChange(of: showSettings) { _, isShowing in
+        .onChange(of: showSettings) { isShowing in
             // 设置页面关闭时，更新自动刷新配置
             if !isShowing {
                 viewModel.updateAutoRefreshSettings()
@@ -167,7 +174,7 @@ struct LifeIndexEmptyView: View {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
                 Image(systemName: "heart.text.square")
-                    .foregroundStyle(CyberTheme.primaryGradient)
+                    .primaryGradientForeground()
                 Text("生活指数")
                     .font(.headline)
                     .foregroundColor(.white)
@@ -199,7 +206,7 @@ struct TravelAdviceEmptyView: View {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
                 Image(systemName: "figure.walk")
-                    .foregroundStyle(CyberTheme.primaryGradient)
+                    .primaryGradientForeground()
                 Text("出行建议")
                     .font(.headline)
                     .foregroundColor(.white)
@@ -246,12 +253,10 @@ struct WeatherChartsSection: View {
             // 标题和展开按钮
             HStack {
                 Image(systemName: "chart.line.uptrend.xyaxis")
-                    .foregroundStyle(
-                        LinearGradient(
-                            colors: [Color(hex: "00D4FF"), Color(hex: "7B2FFF")],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
+                    .gradientForeground(
+                        colors: [Color(hex: "00D4FF"), Color(hex: "7B2FFF")],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
                     )
                 Text("数据图表")
                     .font(.headline)
